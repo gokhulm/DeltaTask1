@@ -214,22 +214,40 @@ fun PlayerCreationScreen() {
 
                     if (player1NameText.isEmpty() || player2NameText.isEmpty()) {
                         Toast.makeText(context, "Please enter both player names", Toast.LENGTH_SHORT).show()
-                    }
-                    val player1ExistingGames = sharedPreferences.getInt("${player1NameText}/games", 0)
-                    val player1ExistingWins = sharedPreferences.getInt("${player1NameText}/wins", 0)
-                    val player2ExistingGames = sharedPreferences.getInt("${player2NameText}/games", 0)
-                    val player2ExistingWins = sharedPreferences.getInt("${player2NameText}/wins", 0)
+                    } else{
+                        val player1ExistingGames =
+                            sharedPreferences.getInt("${player1NameText}/games", 0)
+                        val player1ExistingWins =
+                            sharedPreferences.getInt("${player1NameText}/wins", 0)
+                        val player2ExistingGames =
+                            sharedPreferences.getInt("${player2NameText}/games", 0)
+                        val player2ExistingWins =
+                            sharedPreferences.getInt("${player2NameText}/wins", 0)
 
-                    // Store (or update) player data
-                    savePlayerData(context, player1NameText, player1ExistingGames, player1ExistingWins)
-                    savePlayerData(context, player2NameText, player2ExistingGames, player2ExistingWins)
+                        // Store (or update) player data
+                        savePlayerData(
+                            context,
+                            player1NameText,
+                            player1ExistingGames,
+                            player1ExistingWins
+                        )
+                        savePlayerData(
+                            context,
+                            player2NameText,
+                            player2ExistingGames,
+                            player2ExistingWins
+                        )
 
-                    val intent = Intent(context, GameActivity::class.java).apply {
-                        putExtra("PLAYER1_NAME", player1NameText)
-                        putExtra("PLAYER2_NAME", player2NameText)
+                        val intent = Intent(context, GameActivity::class.java).apply {
+                            putExtra("PLAYER1_NAME", player1NameText)
+                            putExtra("PLAYER2_NAME", player2NameText)
+                        }
+                        Log.d(
+                            "PlayerCreation",
+                            "Starting GameActivity with Player 1: $player1NameText, Player 2: $player2NameText"
+                        )
+                        context.startActivity(intent)
                     }
-                    Log.d("PlayerCreation", "Starting GameActivity with Player 1: $player1NameText, Player 2: $player2NameText")
-                    context.startActivity(intent)
                 },
                 colors = ButtonDefaults.buttonColors(containerColor = colorResource(R.color.dark_blue)),
                 modifier = Modifier

@@ -234,23 +234,6 @@ class GameActivity : ComponentActivity() {
             Row (modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Absolute.Left) {
                 Button(
                     onClick = {
-                        Intent(applicationContext, MainActivity::class.java).also {
-                            startActivity(it)
-                        }
-                    },
-                    colors = ButtonDefaults.buttonColors(containerColor = Color.White.copy(alpha = 0.3f)),
-                    modifier = Modifier
-                        .padding(0.dp)
-                        .offset(5.dp)
-                        .height(50.dp)
-                        .width(70.dp),
-                    shape = RoundedCornerShape(20.dp),
-                    contentPadding = PaddingValues(0.dp)
-                ) {
-                    Text(text = "Reset", fontSize = 24.sp, color = Color.Black, modifier = Modifier.offset(0.dp,(-3).dp))
-                }
-                Button(
-                    onClick = {
                         for (i in 0 until 5) {
                             for (j in 0 until 5) {
                                 buttonStates[i][j].value = 0
@@ -264,9 +247,26 @@ class GameActivity : ComponentActivity() {
                         blueScore = 0
                         firstTurn = 2
                     },
+                    colors = ButtonDefaults.buttonColors(containerColor = Color.White.copy(alpha = 0.3f)),
                     modifier = Modifier
                         .padding(0.dp)
-                        .offset(LocalConfiguration.current.screenWidthDp.dp/2-100.dp)
+                        .offset(5.dp)
+                        .height(50.dp)
+                        .width(100.dp),
+                    shape = RoundedCornerShape(20.dp),
+                    contentPadding = PaddingValues(0.dp)
+                ) {
+                    Text(text = "Reset", fontSize = 24.sp, color = Color.Black, modifier = Modifier.offset(0.dp,(-3).dp))
+                }
+                Button(
+                    onClick = {
+                        Intent(applicationContext, MainActivity::class.java).also {
+                            startActivity(it)
+                        }
+                    },
+                    modifier = Modifier
+                        .padding(0.dp)
+                        .offset(LocalConfiguration.current.screenWidthDp.dp/2-130.dp)
                         .size(50.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = Color.White.copy(alpha = 0.3f)),
                     shape = androidx.compose.foundation.shape.CircleShape,
