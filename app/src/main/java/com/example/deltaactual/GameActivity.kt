@@ -262,7 +262,7 @@ class GameActivity : ComponentActivity() {
                     onClick = {
                         Intent(applicationContext, MainActivity::class.java).also {
                             startActivity(it)
-                        }
+                        }.flags= Intent.FLAG_ACTIVITY_CLEAR_TOP
                     },
                     modifier = Modifier
                         .padding(0.dp)
@@ -326,7 +326,7 @@ class GameActivity : ComponentActivity() {
 
                         Intent(applicationContext, MainActivity::class.java).also {
                             startActivity(it)
-                        }
+                        }.flags= Intent.FLAG_ACTIVITY_CLEAR_TOP
                     },
                     title = { Text(text = "Winner: $winner") },
                     confirmButton = {
