@@ -166,7 +166,7 @@ class MainActivity : ComponentActivity() {
                             fontSize = 30.sp,
                             fontWeight = FontWeight.SemiBold,
                             modifier = Modifier.align(Alignment.CenterVertically)
-                                .offset((-12).dp)
+                                .offset((-15).dp)
                         )
                     }
                     Button(
