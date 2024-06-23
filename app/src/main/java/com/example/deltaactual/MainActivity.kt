@@ -67,8 +67,8 @@ class MainActivity : ComponentActivity() {
         val allPlayerNames = remember(statsUpdated) {
             val playerNames = mutableListOf<String>()
             sharedPreferences.all.keys.forEach { key ->
-                if (key.endsWith("/games")) { // Check if the key represents a player's games count
-                    playerNames.add(key.substringBefore("/")) // Extract the player name
+                if (key.endsWith("/games")) {
+                    playerNames.add(key.substringBefore("/")) // Only name taken
                 }
             }
             playerNames
